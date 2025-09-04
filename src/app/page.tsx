@@ -1,6 +1,6 @@
 import SearchBar from "@/components/SearchBar";
 import EventList from "@/components/EventList";
-import { ReactQueryClientProvider } from "./providers";
+import { ReactQueryClientProvider } from "@/app/providers";
 
 export default function Page() {
   return (
