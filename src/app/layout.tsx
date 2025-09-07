@@ -1,5 +1,5 @@
 import "./globals.css";
-import { ReactQueryClientProvider } from "./providers";
+
 
 export const metadata = {
   title: "Carers Events",

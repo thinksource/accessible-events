@@ -28,7 +28,7 @@ async function fetchEvents(): Promise<Event[]> {
     const parsedDate = new Date(e.date);
     return {
       ...e,
-      date: isNaN(parsedDate.getTime()) ? null : parsedDate, // 不是有效日期则存 null
+      date: isNaN(parsedDate.getTime()) ? null : parsedDate, // no validate date null
     };
   });
 }
