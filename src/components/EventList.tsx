@@ -41,7 +41,7 @@ export default function EventList() {
   });
 
   if (isLoading) return <p>Loading events...</p>;
-  if (isError) return <p>Failed to load events.</p>;
+  if (isError) return <p role="alert" className="text-red-500">Failed to load events.</p>;
 
   const filtered = events?.filter((e) => {
     const matchSearch = e.event.toLowerCase().includes(search.toLowerCase());
@@ -53,15 +53,19 @@ export default function EventList() {
   });
 
   return (
-    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3" role="list" aria-label="Event list">
       {filtered && filtered.length > 0 ? (
         filtered.map((e, idx) => (
-          <div
+          <article
             key={idx}
+            role="article"
+            aria-labelledby="event-title"
+            aria-describedby="event-date event-org event-type event-location"
             className="rounded-lg border p-4 shadow-sm bg-white hover:shadow-md transition"
           >
-            <h2 className="text-lg font-semibold">{e.event}</h2>
+            <h2 className="text-lg font-semibold" aria-label="Event title">{e.event}</h2>
             <p className="text-sm text-gray-600">
+              <span className="sr-only">Event date: </span>
               {e.date ? e.date.toDateString() : "Date unavailable"}
             </p>
             <p className="mt-1 text-sm">
@@ -74,7 +78,7 @@ export default function EventList() {
               <span className="font-medium">Location:</span> {e.location},{" "}
               {e.district}
             </p>
-          </div>
+          </article>
         ))
       ) : (
         <p className="col-span-full text-center text-gray-500">
