@@ -81,7 +81,7 @@ export default function EventList() {
           </article>
         ))
       ) : (
-        <p className="col-span-full text-center text-gray-500">
+        <p className="col-span-full text-center text-gray-500" role="feedback">
           No events found
         </p>
       )}
